@@ -75,17 +75,30 @@ class App extends React.Component {
       username : "",
     }
   }
+  componentDidMount() {
+    if (localStorage.getItem("username")) {
+      this.setState({loggedIn: true});
+      this.setState({username:localStorage.getItem("username")});
+    }
+  }
   handleShowLogin = () => {
     this.setState({showLogin : !(this.state.showLogin)})
   }
-  handleLogin = () => {
-    this.setState({loggedIn : !(this.state.loggedIn), showLogin: false})
+  handleLogin = (event) => {
+    event.preventDefault();
+    this.setState({loggedIn : true, showLogin: false, username: event.target[0].value})
+    localStorage.setItem("username",event.target[0].value);
+  }
+  handleLogout = (event) => {
+    event.preventDefault();
+    localStorage.clear();
+    this.setState({loggedIn: false, username: '', showLogin: false});
   }
   render() {
     return (
       <AppS>
-        <TopBar handleShowLogin={this.handleShowLogin} />
-        { this.state.showLogin ? <Login handleLogin={this.handleLogin} loggedIn={this.state.loggedIn} handleShowLogin={this.handleShowLogin}/> : <div/>}
+        <TopBar loginText={this.state.loggedIn ? "LOG OUT" : "LOG IN"} handleShowLogin={this.handleShowLogin} />
+        { this.state.showLogin ? <Login username={this.state.username} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedIn={this.state.loggedIn} handleShowLogin={this.handleShowLogin}/> : <div/>}
         <Header />
         <Carousel/>
         <Auth loggedIn={this.state.loggedIn}/>

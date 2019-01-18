@@ -9,13 +9,6 @@ const Text = styled.div`
 
 const Authenticate = ContentApp => {
     return class extends React.Component {
-        componentDidMount() {
-            /*
-            if (localStorage.getItem("username")) {
-                this.setState({loggedIn: true});
-                this.setState({username:localStorage.getItem("username")});
-            }*/
-        }
         render() {
             if (this.props.loggedIn) {
             return (

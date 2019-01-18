@@ -94,7 +94,7 @@ const TopBar = (props) => {
           <span>GENERAL</span><span>BROWNBAG</span><span>RANDOM</span><span>MUSIC</span><span>ANNOUNCEMENTS</span>
         </ContainerCenter>
         <ContainerRight>
-          <span onClick={props.handleShowLogin}>LOG IN</span>
+          <span onClick={props.handleShowLogin}>{props.loginText}</span>
         </ContainerRight>
       </Container>
     </TopBarS>

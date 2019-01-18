@@ -67,7 +67,7 @@ const Mask = styled.div` {
   }`;
 
 const Text = styled.div`
-  font-size: 24px;
+  font-size: 22px;
   text-align: center;
   padding-bottom: 50px;
 `
@@ -81,7 +81,7 @@ const Login = (props) => {
             <LoginContainer>
                 { props.loggedIn ?
                     <LoginForm onSubmit={props.handleLogout} >
-                        <Text>Already logged in! <br></br> Did you want to logout?</Text>
+                        <Text>Currently logged in as {props.username}. Did you want to logout?</Text>
                         <LoginButton type="submit" value="Log Out"></LoginButton>
                     </LoginForm>
                      :
