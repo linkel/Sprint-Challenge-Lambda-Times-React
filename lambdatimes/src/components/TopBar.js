@@ -13,6 +13,8 @@ const TopBarS = styled.div`
   position: fixed;
   height: 44px;
   background-color: #333;
+  z-index:5;
+  top: 0px;
 `;
 
 const Container = styled.div`
@@ -81,7 +83,7 @@ const ContainerRight = styled.div` {
 
 
 
-const TopBar = () => {
+const TopBar = (props) => {
   return (
     <TopBarS>
       <Container>
@@ -92,7 +94,7 @@ const TopBar = () => {
           <span>GENERAL</span><span>BROWNBAG</span><span>RANDOM</span><span>MUSIC</span><span>ANNOUNCEMENTS</span>
         </ContainerCenter>
         <ContainerRight>
-          <span>LOG IN</span>
+          <span onClick={props.handleShowLogin}>LOG IN</span>
         </ContainerRight>
       </Container>
     </TopBarS>

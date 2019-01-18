@@ -4,6 +4,8 @@ import Header from './components/Header';
 import Content from './components/Content/Content';
 import Carousel from './components/Carousel/Carousel';
 import styled from 'styled-components';
+import Login from './components/Login';
+import Authenticate from './components/Authenticate';
 
 const AppS = styled.div`
 .width-100 {
@@ -62,16 +64,34 @@ body {
 
 `
 
+const Auth = Authenticate(Content);
 
-const App = () => {
-  return (
-    <AppS>
-      <TopBar />
-      <Header />
-      <Carousel/>
-      <Content />
-    </AppS>
-  );
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      showLogin : false,
+      loggedIn : false,
+      username : "",
+    }
+  }
+  handleShowLogin = () => {
+    this.setState({showLogin : !(this.state.showLogin)})
+  }
+  handleLogin = () => {
+    this.setState({loggedIn : !(this.state.loggedIn), showLogin: false})
+  }
+  render() {
+    return (
+      <AppS>
+        <TopBar handleShowLogin={this.handleShowLogin} />
+        { this.state.showLogin ? <Login handleLogin={this.handleLogin} loggedIn={this.state.loggedIn} handleShowLogin={this.handleShowLogin}/> : <div/>}
+        <Header />
+        <Carousel/>
+        <Auth loggedIn={this.state.loggedIn}/>
+      </AppS>
+    );
+  }
 }
 
 export default App;
