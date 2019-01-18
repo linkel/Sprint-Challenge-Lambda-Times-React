@@ -1,0 +1,4 @@
+1. PropTypes are used to check the type of the property being passed from parent to child. They will throw a console error if the prop type does not match (for example, if it is an object instead of a string). Type-checking is a way to self-test for potential mistakes while writing code. 
+2. A lifecycle event in React is any event that takes actions based on the mounting, updating, or removal of a React application or component. If there is an event that triggers every time the component updates, that would count as a lifecycle event (in componentDidMount(), for example).
+3. A higher order component is a component that takes another component as a parameter, does something to it, and then returns the component. To juxtapose, ordinary components take properties as parameters. 
+4. One can style components in react using vanilla CSS, use a preprocessor like SASS, use a styling library like reactstrap, or write CSS in JS using styled components. 
